@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<title>Estados de México</title>
+
+<link rel="stylesheet" href="estilos.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  width:260px;
+  margin:15px;
+}
+
+canvas{
+  margin-top:25px;
+}
+
+#imgEstado{
+  max-width:300px;
+  margin-top:20px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  display:none;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<h1>Consulta los datos de los Estados de México</h1>
+
+<p>Escribe el nombre de un estado</p>
+
+<input type="text" id="buscador" placeholder="Ej. Vera..." oninput="buscarEstado()">
+
+<h2 id="nombreEstado"></h2>
+
+<div id="infoEstado"></div>
+
+<!-- Imagen del estado -->
+<img id="imgEstado" src="" alt="Imagen del estado">
+
+<h3>Datos generales</h3>
+<canvas id="grafica"></canvas>
+
+<h3>Minerales del estado</h3>
+<canvas id="graficaMineral"></canvas>
+
+<br><br>
+
+<button onclick="window.location.href='index.html'">
+Regresar al menú
+</button>
+
+</div>
+
+<script>
+let estados = {
+"Aguascalientes":{capital:"Aguascalientes",poblacion:1425607,superficie:5616,region:"Centro-Norte",minerales:"Plata, zinc",mineral:{petroleo:0,oro:10,plata:40,cobre:10,hierro:10},imagen:"Imagenes/estados/Aguascalientes1.jpg"},
+"Baja California":{capital:"Mexicali",poblacion:3769020,superficie:71450,region:"Noroeste",minerales:"Oro, plata",mineral:{petroleo:0,oro:50,plata:40,cobre:10,hierro:5},imagen:"Imagenes/estados/Bajacalifornia1.png"},
+"Baja California Sur":{capital:"La Paz",poblacion:798447,superficie:73909,region:"Noroeste",minerales:"Sal, fosfato",mineral:{petroleo:0,oro:10,plata:10,cobre:5,hierro:5},imagen:"Imagenes/estados/Bajacaliforniasur.png"},
+"Campeche":{capital:"Campeche",poblacion:928363,superficie:57924,region:"Sureste",minerales:"Petróleo",mineral:{petroleo:90,oro:0,plata:0,cobre:0,hierro:0},imagen:"Imagenes/estados/Campeche.png"},
+"Chiapas":{capital:"Tuxtla Gutiérrez",poblacion:5543828,superficie:73211,region:"Sureste",minerales:"Ámbar",mineral:{petroleo:5,oro:5,plata:5,cobre:5,hierro:10},imagen:"Imagenes/estados/Chiapas.png"},
+"Chihuahua":{capital:"Chihuahua",poblacion:3741869,superficie:247455,region:"Norte",minerales:"Oro, plata, plomo",mineral:{petroleo:0,oro:70,plata:80,cobre:20,hierro:20},imagen:"Imagenes/estados/Chihuahua.png"},
+"Ciudad de México":{capital:"Ciudad de México",poblacion:9209944,superficie:1495,region:"Centro",minerales:"Arena",mineral:{petroleo:0,oro:0,plata:0,cobre:0,hierro:0},imagen:"Imagenes/estados/Ciudaddemexico.png"},
+"Coahuila":{capital:"Saltillo",poblacion:3146771,superficie:151563,region:"Norte",minerales:"Carbón, hierro",mineral:{petroleo:0,oro:5,plata:10,cobre:10,hierro:70},imagen:"Imagenes/estados/Coahuila.jpg"},
+"Colima":{capital:"Colima",poblacion:731391,superficie:5627,region:"Occidente",minerales:"Hierro",mineral:{petroleo:0,oro:0,plata:0,cobre:10,hierro:60},imagen:"Imagenes/estados/Colima.png"},
+"Durango":{capital:"Durango",poblacion:1832650,superficie:123451,region:"Norte",minerales:"Oro, plata",mineral:{petroleo:0,oro:60,plata:70,cobre:20,hierro:20},imagen:"Imagenes/estados/Durango.jpg"},
+"Estado de México":{capital:"Toluca",poblacion:16992418,superficie:22357,region:"Centro",minerales:"Basalto",mineral:{petroleo:0,oro:5,plata:5,cobre:5,hierro:10},imagen:"Imagenes/estados/Estadodemexico.png"},
+"Guanajuato":{capital:"Guanajuato",poblacion:6166934,superficie:30608,region:"Centro",minerales:"Plata, oro",mineral:{petroleo:0,oro:60,plata:80,cobre:20,hierro:10},imagen:"Imagenes/estados/Guanajuato.png"},
+"Guerrero":{capital:"Chilpancingo",poblacion:3540685,superficie:63621,region:"Sur",minerales:"Oro",mineral:{petroleo:0,oro:80,plata:40,cobre:10,hierro:10},imagen:"Imagenes/estados/Guerrero.png"},
+"Hidalgo":{capital:"Pachuca",poblacion:3082841,superficie:20813,region:"Centro",minerales:"Plata",mineral:{petroleo:0,oro:40,plata:70,cobre:10,hierro:10},imagen:"Imagenes/estados/Hidalgo.png"},
+"Jalisco":{capital:"Guadalajara",poblacion:8348151,superficie:78599,region:"Occidente",minerales:"Oro",mineral:{petroleo:0,oro:60,plata:40,cobre:20,hierro:10},imagen:"Imagenes/estados/Jalisco.png"},
+"Michoacán":{capital:"Morelia",poblacion:4748846,superficie:58599,region:"Occidente",minerales:"Hierro, cobre",mineral:{petroleo:0,oro:20,plata:20,cobre:50,hierro:70},imagen:"Imagenes/estados/Michoacan.png"},
+"Morelos":{capital:"Cuernavaca",poblacion:1971520,superficie:4893,region:"Centro",minerales:"Caliza",mineral:{petroleo:0,oro:0,plata:0,cobre:0,hierro:5},imagen:"Imagenes/estados/Morelos.png"},
+"Nayarit":{capital:"Tepic",poblacion:1235456,superficie:27857,region:"Occidente",minerales:"Oro",mineral:{petroleo:0,oro:50,plata:40,cobre:10,hierro:10},imagen:"Imagenes/estados/Nayarit.png"},
+"Nuevo León":{capital:"Monterrey",poblacion:5784442,superficie:64220,region:"Norte",minerales:"Carbón",mineral:{petroleo:0,oro:10,plata:10,cobre:10,hierro:40},imagen:"Imagenes/estados/Nuevoleon.png"},
+"Oaxaca":{capital:"Oaxaca",poblacion:4132148,superficie:93757,region:"Sur",minerales:"Oro, plata",mineral:{petroleo:0,oro:70,plata:70,cobre:20,hierro:10},imagen:"Imagenes/estados/Oaxaca.png"},
+"Puebla":{capital:"Puebla",poblacion:6583278,superficie:34306,region:"Centro",minerales:"Ónix",mineral:{petroleo:0,oro:20,plata:20,cobre:10,hierro:10},imagen:"Imagenes/estados/Puebla.png"},
+"Querétaro":{capital:"Querétaro",poblacion:2368467,superficie:11684,region:"Centro",minerales:"Ópalo",mineral:{petroleo:0,oro:30,plata:20,cobre:10,hierro:5},imagen:"Imagenes/estados/Queretaro.png"},
+"Quintana Roo":{capital:"Chetumal",poblacion:1857985,superficie:42361,region:"Sureste",minerales:"Caliza",mineral:{petroleo:0,oro:0,plata:0,cobre:0,hierro:5},imagen:"Imagenes/estados/Quintanaroo.png",municipios:11},
+"San Luis Potosí":{capital:"San Luis Potosí",poblacion:2822255,superficie:60982,region:"Centro-Norte",minerales:"Plata, zinc",mineral:{petroleo:0,oro:40,plata:70,cobre:20,hierro:20},imagen:"Imagenes/estados/SLP.jpg"},
+"Sinaloa":{capital:"Culiacán",poblacion:3026943,superficie:57331,region:"Noroeste",minerales:"Oro",mineral:{petroleo:0,oro:60,plata:40,cobre:20,hierro:10},imagen:"Imagenes/estados/Sinaloa.png"},
+"Sonora":{capital:"Hermosillo",poblacion:2944840,superficie:179355,region:"Noroeste",minerales:"Cobre, oro",mineral:{petroleo:0,oro:70,plata:30,cobre:90,hierro:20},imagen:"Imagenes/estados/Sonora.png"},
+"Tabasco":{capital:"Villahermosa",poblacion:2402598,superficie:24661,region:"Sureste",minerales:"Petróleo",mineral:{petroleo:85,oro:0,plata:0,cobre:0,hierro:0},imagen:"Imagenes/estados/Tabasco.png",municipios:17},
+"Tamaulipas":{capital:"Ciudad Victoria",poblacion:3527735,superficie:80175,region:"Noreste",minerales:"Gas natural",mineral:{petroleo:40,oro:5,plata:5,cobre:5,hierro:10},imagen:"Imagenes/estados/Tamaulipas.png"},
+"Tlaxcala":{capital:"Tlaxcala",poblacion:1342977,superficie:4016,region:"Centro",minerales:"Arena",mineral:{petroleo:0,oro:0,plata:0,cobre:0,hierro:5},imagen:"Imagenes/estados/Tlaxcala.png"},
+"Veracruz":{capital:"Xalapa",poblacion:8062579,superficie:71820,region:"Golfo de México",minerales:"Petróleo, gas natural",mineral:{petroleo:90,oro:10,plata:10,cobre:10,hierro:20},imagen:"Imagenes/estados/Veracruz.png"},
+"Yucatán":{capital:"Mérida",poblacion:2320898,superficie:39612,region:"Sureste",minerales:"Caliza",mineral:{petroleo:0,oro:0,plata:0,cobre:0,hierro:5},imagen:"Imagenes/estados/Yucatan.png"},
+"Zacatecas":{capital:"Zacatecas",poblacion:1622138,superficie:75304,region:"Centro-Norte",minerales:"Plata",mineral:{petroleo:0,oro:40,plata:95,cobre:20,hierro:10},imagen:"Imagenes/estados/Zacatecas.png"}
+};
+
+let grafica1;
+let grafica2;
+
+function buscarEstado(){
+  let texto = document.getElementById("buscador").value.toLowerCase();
+  if(texto.length < 3) return;
+
+  for(let estado in estados){
+    if(estado.toLowerCase().includes(texto)){
+      mostrarEstado(estado);
+      return;
+    }
+  }
+}
+
+function mostrarEstado(nombre){
+  let estado = estados[nombre];
+
+  document.getElementById("nombreEstado").innerHTML = nombre;
+
+  let info = "<b>Capital:</b> "+estado.capital+
+  "<br><b>Población:</b> "+estado.poblacion+
+  "<br><b>Superficie:</b> "+estado.superficie+" km²"+
+  "<br><b>Región:</b> "+estado.region+
+  "<br><b>Minerales principales:</b> "+estado.minerales;
+
+  // Agregar número de municipios si aplica
+  if(nombre === "Quintana Roo") info += "<br><b>Número de municipios:</b> 11";
+  if(nombre === "Tabasco") info += "<br><b>Número de municipios:</b> 17";
+
+  document.getElementById("infoEstado").innerHTML = info;
+
+  // Mostrar imagen
+  let img = document.getElementById("imgEstado");
+  img.src = estado.imagen;
+  img.style.display = "block";
+
+  if(grafica1) grafica1.destroy();
+  if(grafica2) grafica2.destroy();
+
+  // Gráfica población y superficie
+  let ctx1 = document.getElementById("grafica");
+  grafica1 = new Chart(ctx1,{
+    type:"bar",
+    data:{
+      labels:["Población","Superficie km²"],
+      datasets:[{
+        label:nombre,
+        data:[estado.poblacion,estado.superficie],
+        backgroundColor:["#42a5f5","#66bb6a"]
+      }]
+    }
+  });
+
+  // Gráfica minerales
+  let ctx2 = document.getElementById("graficaMineral");
+  grafica2 = new Chart(ctx2,{
+    type:"bar",
+    data:{
+      labels:["Petróleo","Oro","Plata","Cobre","Hierro"],
+      datasets:[{
+        label:"Minerales en "+nombre,
+        data:[
+          estado.mineral.petroleo,
+          estado.mineral.oro,
+          estado.mineral.plata,
+          estado.mineral.cobre,
+          estado.mineral.hierro
+        ],
+        backgroundColor:["#fdd835","#ff8f00","#c0ca33","#8d6e63","#607d8b"]
+      }]
+    }
+  });
+}
+</script>
+
+</body>
+</html>

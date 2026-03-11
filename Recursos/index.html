@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Facultad de Ingeniería</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+<!-- PORTADA -->
+<div id="portada" class="seccion activa">
+<div class="card">
+
+<h1>RECURSOS Y NECESIDADES DE MÉXICO</h1>
+
+<div class="imagenes">
+<img src="Imagenes/portada.jpg">
+<img src="Imagenes/mexportada.jpg">
+</div>
+
+<button onclick="mostrar('principal')">Entrar</button>
+
+</div>
+</div>
+
+<!-- MENU PRINCIPAL -->
+<div id="principal" class="seccion">
+<div class="card">
+
+<h2>Menú Principal</h2>
+
+<div class="menu">
+
+<button onclick="mostrar('datos')">Datos personales</button>
+
+<button onclick="mostrar('recursos')">Recursos</button>
+
+<button onclick="mostrar('necesidades')">Necesidades de México</button>
+
+<button onclick="window.location.href='estados.html'">
+Estados de México
+</button>
+
+</div>
+
+<button onclick="mostrar('portada')">Regresar</button>
+
+</div>
+</div>
+
+<!-- DATOS PERSONALES -->
+<div id="datos" class="seccion">
+<div class="card">
+
+<h2>Datos Personales</h2>
+
+<p><b>Nombre:</b> Hernández Lira José Enrique</p>
+
+<p><b>Carrera:</b> Ingeniería en Sistemas Computacionales</p>
+
+<p><b>Materia:</b> Recursos y Necesidades de México</p>
+
+<p><b>Facultad:</b> Facultad de Ingeniería</p>
+
+<button onclick="mostrar('principal')">Regresar</button>
+
+</div>
+</div>
+
+<!-- RECURSOS -->
+<div id="recursos" class="seccion">
+<div class="card">
+
+<h2>Recursos</h2>
+
+<div class="menu">
+
+<button onclick="mostrar('renovables')">1.1 Renovables</button>
+
+<button onclick="mostrar('noRenovables')">1.2 No Renovables</button>
+
+<button onclick="mostrar('problemas')">1.3 Problemas Ambientales</button>
+
+<button onclick="mostrar('poblacion')">1.4 Población</button>
+
+</div>
+
+<button onclick="mostrar('principal')">Regresar</button>
+
+</div>
+</div>
+
+<!-- RENOVABLES -->
+<div id="renovables" class="seccion">
+<div class="card">
+
+<h2>1.1 Renovables</h2>
+
+<p>México cuenta con amplias posibilidades para aprovechar energías renovables.</p>
+
+<p>La energía solar y eólica ayudan a reducir contaminación.</p>
+
+<p>Su desarrollo impulsa tecnología y empleo.</p>
+
+<div class="imagenes">
+
+<img src="Imagenes/RR1.jpg">
+
+<img src="Imagenes/RR2.jpg">
+
+</div>
+
+<button onclick="mostrar('recursos')">Regresar</button>
+
+</div>
+</div>
+
+<!-- NO RENOVABLES -->
+<div id="noRenovables" class="seccion">
+<div class="card">
+
+<h2>1.2 No Renovables</h2>
+
+<p>El petróleo ha sido base del crecimiento económico.</p>
+
+<p>Su explotación genera ingresos pero también contaminación.</p>
+
+<p>Es importante diversificar las fuentes de energía.</p>
+
+<div class="imagenes">
+
+<img src="Imagenes/RNR1.jpg">
+
+<img src="Imagenes/RNR2.jpg">
+
+</div>
+
+<button onclick="mostrar('recursos')">Regresar</button>
+
+</div>
+</div>
+
+<!-- PROBLEMAS AMBIENTALES -->
+<div id="problemas" class="seccion">
+<div class="card">
+
+<h2>1.3 Problemas Ambientales</h2>
+
+<p>La contaminación afecta aire, agua y suelo.</p>
+
+<p>La deforestación provoca pérdida de biodiversidad.</p>
+
+<p>Es necesario promover políticas ambientales.</p>
+
+<div class="imagenes">
+
+<img src="Imagenes/PA1.jpg">
+
+<img src="Imagenes/PA2.jpg">
+
+</div>
+
+<button onclick="mostrar('recursos')">Regresar</button>
+
+</div>
+</div>
+
+<!-- POBLACION -->
+<div id="poblacion" class="seccion">
+<div class="card">
+
+<h2>1.4 Población</h2>
+
+<p>El crecimiento poblacional genera mayor demanda de servicios.</p>
+
+<p>Las ciudades concentran la mayoría de habitantes.</p>
+
+<p>La desigualdad social genera pobreza y desempleo.</p>
+
+<div class="imagenes">
+
+<img src="Imagenes/PO1.jpeg">
+
+<img src="Imagenes/PO2.jpg">
+
+</div>
+
+<div class="menu">
+
+<button onclick="mostrar('pobreza')">Pobreza</button>
+
+<button onclick="mostrar('desempleo')">Desempleo</button>
+
+<button onclick="mostrar('informal')">Economía informal</button>
+
+</div>
+
+<button onclick="mostrar('recursos')">Regresar</button>
+
+</div>
+</div>
+
+<!-- SUBTEMAS -->
+<div id="pobreza" class="seccion">
+<div class="card">
+
+<h2>Pobreza</h2>
+
+<p>La pobreza limita el acceso a educación, salud y vivienda.</p>
+
+<p>Se relaciona con desigualdad social.</p>
+
+<p>Reducirla requiere políticas públicas.</p>
+
+<div class="imagenes">
+
+<img src="Imagenes/POBR1.jpg">
+
+<img src="Imagenes/POBR2.jpg">
+
+</div>
+
+<button onclick="mostrar('poblacion')">Regresar</button>
+
+</div>
+</div>
+
+<div id="desempleo" class="seccion">
+<div class="card">
+
+<h2>Desempleo</h2>
+
+<p>El desempleo afecta el desarrollo económico.</p>
+
+<p>Provoca inestabilidad social.</p>
+
+<p>La inversión y capacitación ayudan a reducirlo.</p>
+
+<div class="imagenes">
+
+<img src="Imagenes/DESE1.png">
+
+<img src="Imagenes/DESE2.jpg">
+
+</div>
+
+<button onclick="mostrar('poblacion')">Regresar</button>
+
+</div>
+</div>
+
+<div id="informal" class="seccion">
+<div class="card">
+
+<h2>Economía Informal</h2>
+
+<p>La economía informal genera ingresos sin regulación.</p>
+
+<p>No ofrece seguridad social.</p>
+
+<p>Reducirla requiere fortalecer el empleo formal.</p>
+
+<div class="imagenes">
+
+<img src="Imagenes/EI1.png">
+
+<img src="Imagenes/EI2.jpg">
+</div>
+
+<button onclick="mostrar('poblacion')">Regresar</button>
+
+</div>
+</div>
+
+<!-- ================= NECESIDADES ================= -->
+<div id="necesidades" class="seccion">
+  <div class="card">
+    <h2>Necesidades de México</h2>
+    <div class="menu">
+      <button onclick="mostrar('agro')">2.1 Desarrollo Agropecuario</button>
+      <button onclick="mostrar('industrial')">2.2 Desarrollo Industrial</button>
+      <button onclick="mostrar('servicios')">2.3 Desarrollo de Servicios</button>
+      <button onclick="mostrar('educacion')">2.4 Educación</button>
+    </div>
+    <button onclick="mostrar('principal')">Regresar</button>
+  </div>
+</div>
+
+<!-- ================= 2.1 AGRO ================= -->
+<div id="agro" class="seccion">
+  <div class="card">
+    <h2>2.1 Desarrollo Agropecuario</h2>
+    <p>El sector agropecuario es esencial para seguridad alimentaria y empleo rural.</p>
+    <p>Enfrenta retos de baja productividad y desigualdad regional.</p>
+    <p>La modernización sustentable equilibra producción y conservación ambiental.</p>
+    <div class="imageness">
+      <img src="Imagenes/DA2.jpg">
+    </div>
+    <button onclick="mostrar('necesidades')">Regresar</button>
+  </div>
+</div>
+
+<!-- ================= 2.2 INDUSTRIAL ================= -->
+<div id="industrial" class="seccion">
+  <div class="card">
+    <h2>2.2 Desarrollo Industrial</h2>
+    <p>La industria transforma materias primas y genera empleo.</p>
+    <p>Existen desigualdades regionales en infraestructura.</p>
+    <p>Innovación y diversificación fortalecen competitividad internacional.</p>
+    <div class="imagenes">
+      <img src="Imagenes/DI1.png">
+      <img src="Imagenes/DI2.jpg">
+    </div>
+    <button onclick="mostrar('necesidades')">Regresar</button>
+  </div>
+</div>
+
+<!-- ================= 2.3 SERVICIOS ================= -->
+<div id="servicios" class="seccion">
+  <div class="card">
+    <h2>2.3 Desarrollo de Servicios</h2>
+    <p>El sector servicios representa gran parte del PIB nacional.</p>
+    <p>Incluye comercio, transporte y telecomunicaciones.</p>
+    <p>Su expansión refleja cambios estructurales en la economía.</p>
+    <div class="menu">
+      <button onclick="mostrar('transporte')">2.3.1 Transporte</button>
+      <button onclick="mostrar('telecom')">2.3.2 Telecomunicaciones</button>
+      <button onclick="mostrar('vivienda')">2.3.3 Vivienda</button>
+      <button onclick="mostrar('agua')">2.3.4 Agua y Alcantarillado</button>
+    </div>
+    <div class="imaagenes">
+      <img src="Imagenes/DS1.jpg">
+    </div>
+    <button onclick="mostrar('necesidades')">Regresar</button>
+  </div>
+</div>
+
+<div id="transporte" class="seccion">
+<div class="card">
+<h2>2.3.1 Transporte</h2>
+<p>Conecta regiones y reduce costos productivos.</p>
+<p>La infraestructura insuficiente limita competitividad.</p>
+<p>Movilidad sustentable reduce emisiones.</p>
+<div class="imagenes"><img src="Imagenes/ST.jpg"></div>
+<button onclick="mostrar('servicios')">Regresar</button>
+</div>
+</div>
+
+<div id="telecom" class="seccion">
+<div class="card">
+<h2>2.3.2 Telecomunicaciones</h2>
+<p>La conectividad impulsa desarrollo moderno.</p>
+<p>La brecha digital genera desigualdad.</p>
+<p>Invertir en tecnología fortalece competitividad.</p>
+<div class="imagenes"><img src="Imagenes/tel.jpeg"></div>
+<button onclick="mostrar('servicios')">Regresar</button>
+</div>
+</div>
+
+<div id="vivienda" class="seccion">
+<div class="card">
+<h2>2.3.3 Vivienda</h2>
+<p>La vivienda digna es indicador de bienestar.</p>
+<p>El crecimiento urbano desordenado genera problemas sociales.</p>
+<p>La planeación sustentable mejora calidad de vida.</p>
+<div class="imagenes"><img src="Imagenes/VIV.jpg"></div>
+<button onclick="mostrar('servicios')">Regresar</button>
+</div>
+</div>
+
+<div id="agua" class="seccion">
+<div class="card">
+<h2>2.3.4 Agua potable y alcantarillado</h2>
+<p>El acceso al agua es esencial para la salud.</p>
+<p>La escasez y contaminación son retos crecientes.</p>
+<p>La gestión sustentable requiere infraestructura adecuada.</p>
+<div class="imagenes"><img src="Imagenes/Agua.jpg"></div>
+<button onclick="mostrar('servicios')">Regresar</button>
+</div>
+</div>
+
+<div id="educacion" class="seccion">
+<div class="card">
+<h2>2.4 Educación</h2>
+<p>La educación impulsa movilidad social y productividad.</p>
+<p>Persisten brechas regionales de calidad.</p>
+<p>Invertir en capital humano fortalece desarrollo sustentable.</p>
+<div class="imagenes"><img src="Imagenes/ED1.jpg"></div>
+<button onclick="mostrar('necesidades')">Regresar</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+<script src="script.js"></script>
+
+</body>
+</html>

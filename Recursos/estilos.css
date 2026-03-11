@@ -1,0 +1,76 @@
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.seccion{
+display:none;
+width:100%;
+text-align:center;
+}
+
+.activa{
+display:block;
+}
+
+.card{
+background:#ffffffdd;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+max-width:800px;
+margin:auto;
+animation:fade .5s ease-in-out;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(10px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.menu{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin:20px 0;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#ffd6e0;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#cdb4db;
+color:white;
+transform:scale(1.05);
+}
+
+.imagenes img{
+width:200px;
+margin:10px;
+border-radius:15px;
+}
+
+.imageness img{
+width:250px;
+margin:10px;
+border-radius:15px;
+}
+
+.imaagenes img{
+width:250px;
+margin:10px;
+border-radius:15px;
+}
